@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 300.0
 
+func _ready():
+	global_position = get_viewport_rect().end / 2
+
 func _process(delta):
 	var mouse_position = get_global_mouse_position()
 	look_at(mouse_position)
