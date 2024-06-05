@@ -1,13 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://beit42yk4qfj5"]
+[gd_scene load_steps=5 format=3 uid="uid://beit42yk4qfj5"]
 
+[ext_resource type="Shader" path="res://background.gdshader" id="1_14kgd"]
 [ext_resource type="Script" path="res://Player.gd" id="1_ihwp6"]
 [ext_resource type="Script" path="res://PlayerBody.gd" id="2_w4562"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ta2i"]
+shader = ExtResource("1_14kgd")
+shader_parameter/center = Vector2(0.5, 0.5)
+shader_parameter/force = 0.3
+
 [node name="GameWorld" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_2ta2i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+color = Color(0.379811, 0.379811, 0.37981, 1)
+
+[node name="Player" type="CharacterBody2D" parent="CanvasLayer"]
 motion_mode = 1
 script = ExtResource("1_ihwp6")
 
-[node name="PlayerBody" type="Node2D" parent="Player"]
+[node name="PlayerBody" type="Node2D" parent="CanvasLayer/Player"]
 script = ExtResource("2_w4562")

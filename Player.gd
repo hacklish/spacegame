@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const SPEED : float = 300.0
 
 func _ready():
 	global_position = get_viewport_rect().end / 2
@@ -21,6 +21,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("MOVE_RIGHT"):
 		direction += Vector2(1, 0)
 
-	velocity = direction * SPEED
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		shoot()
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
+		use_bomb()
 
+	velocity = direction * SPEED
 	move_and_slide()
+
+func shoot():
+	pass
+	
+func use_bomb():
+	pass

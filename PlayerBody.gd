@@ -1,7 +1,7 @@
 extends Node2D
 
 var center : Vector2 = Vector2(0, 0)
-var color : Color = Color.GREEN
+var color : Color = Color.BLACK
 var antialiasing : bool = true
 var width : int = 3
 
