@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2ex2"]
 radius = 5.0
-height = 54.0
+height = 84.0
 
 [node name="Projectile" type="CharacterBody2D"]
 slide_on_ceiling = false
@@ -25,7 +25,7 @@ autostart = true
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(76, 96)
+position = Vector2(76, 90)
 shape = SubResource("CapsuleShape2D_n2ex2")
 one_way_collision_margin = 13.0
 
