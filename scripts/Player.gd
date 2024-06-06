@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED : float = 400.0
-@onready var projectile = load("res://projectile.tscn")
+@onready var projectile = load("res://scene/projectile.tscn")
 
 func _ready():
 	global_position = get_viewport_rect().end / 2

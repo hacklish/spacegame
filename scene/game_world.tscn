@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://beit42yk4qfj5"]
 
-[ext_resource type="Shader" path="res://background.gdshader" id="1_14kgd"]
-[ext_resource type="Script" path="res://Player.gd" id="1_ihwp6"]
-[ext_resource type="Script" path="res://PlayerBody.gd" id="2_w4562"]
-[ext_resource type="Script" path="res://Enemy.gd" id="4_kgius"]
+[ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
+[ext_resource type="Script" path="res://scripts/Enemy.gd" id="2_tgdft"]
+[ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="3_suaag"]
+[ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ta2i"]
-shader = ExtResource("1_14kgd")
+shader = ExtResource("1_u5o0x")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/force = 0.3
 
@@ -36,7 +36,7 @@ color = Color(0.379811, 0.379811, 0.37981, 1)
 [node name="Enemy" type="CharacterBody2D" parent="CanvasLayer" groups=["Enemy"]]
 position = Vector2(937, 461)
 motion_mode = 1
-script = ExtResource("4_kgius")
+script = ExtResource("2_tgdft")
 
 [node name="EnemyCollision" type="CollisionShape2D" parent="CanvasLayer/Enemy" groups=["Enemy"]]
 modulate = Color(0.384169, 0.381343, 0, 1)
@@ -45,20 +45,20 @@ shape = SubResource("CircleShape2D_tlfd6")
 debug_color = Color(0.628265, 0.605029, 7.6249e-07, 1)
 
 [node name="EnemyRender" type="Node2D" parent="CanvasLayer/Enemy" groups=["Enemy"]]
-script = ExtResource("2_w4562")
+script = ExtResource("3_suaag")
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer" groups=["Player"]]
 unique_name_in_owner = true
 position = Vector2(586, 193)
 motion_mode = 1
-script = ExtResource("1_ihwp6")
+script = ExtResource("4_qiilt")
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="CanvasLayer/Player" groups=["Player"]]
 shape = SubResource("CircleShape2D_iiqyi")
 debug_color = Color(0.266667, 0, 0.427451, 0.952941)
 
 [node name="PlayerRender" type="Node2D" parent="CanvasLayer/Player" groups=["Player"]]
-script = ExtResource("2_w4562")
+script = ExtResource("3_suaag")
 
 [node name="Barrel" type="Node2D" parent="CanvasLayer/Player" groups=["Player"]]
 unique_name_in_owner = true
