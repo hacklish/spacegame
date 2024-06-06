@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://beit42yk4qfj5"]
 
 [ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
-[ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="3_suaag"]
+[ext_resource type="Script" path="res://scripts/Ship.gd" id="3_suaag"]
 [ext_resource type="Script" path="res://scripts/Control.gd" id="4_ocm3m"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
 
