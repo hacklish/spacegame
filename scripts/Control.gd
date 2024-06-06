@@ -30,3 +30,7 @@ func randomize_spawn_point():
 		spawn_point.y = randi_range(0, y)
 
 	return spawn_point
+
+func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
+	if body.is_in_group("Enemy"):
+		get_tree().reload_current_scene()
