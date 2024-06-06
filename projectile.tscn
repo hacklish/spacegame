@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://ngxgbas65nnj"]
+
+[ext_resource type="Script" path="res://Projectile.gd" id="1_c2v7q"]
+[ext_resource type="Texture2D" uid="uid://dtksoyp36s6l7" path="res://assets/projectile.png" id="2_48spp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n2ex2"]
+radius = 5.0
+height = 54.0
+
+[node name="Projectile" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_c2v7q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(76, 96)
+texture = ExtResource("2_48spp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(76, 96)
+shape = SubResource("CapsuleShape2D_n2ex2")
+
+[node name="LifeTime" type="Timer" parent="."]
+autostart = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(76, 96)
+shape = SubResource("CapsuleShape2D_n2ex2")
+one_way_collision_margin = 13.0
+
+[connection signal="timeout" from="LifeTime" to="." method="_on_life_time_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_shape_entered" from="Area2D" to="." method="_on_area_2d_body_shape_entered"]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const SPEED : float = 100.0
 
 func _process(delta):
 	look_at(%Player.position)
