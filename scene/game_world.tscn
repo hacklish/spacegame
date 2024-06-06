@@ -35,7 +35,7 @@ color = Color(0.379811, 0.379811, 0.37981, 1)
 script = ExtResource("4_ocm3m")
 
 [node name="EnemySpawner" type="Timer" parent="CanvasLayer/Control"]
-unique_name_in_owner = true
+wait_time = 0.7
 autostart = true
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer" groups=["Player"]]
