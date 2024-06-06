@@ -1,17 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://beit42yk4qfj5"]
+[gd_scene load_steps=7 format=3 uid="uid://beit42yk4qfj5"]
 
 [ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
-[ext_resource type="Script" path="res://scripts/Enemy.gd" id="2_tgdft"]
 [ext_resource type="Script" path="res://scripts/PlayerBody.gd" id="3_suaag"]
+[ext_resource type="Script" path="res://scripts/Control.gd" id="4_ocm3m"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ta2i"]
 shader = ExtResource("1_u5o0x")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/force = 0.3
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_tlfd6"]
-radius = 40.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iiqyi"]
 
@@ -23,7 +20,8 @@ layer = -1
 follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-z_index = -1
+z_as_relative = false
+y_sort_enabled = true
 material = SubResource("ShaderMaterial_2ta2i")
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,19 +31,12 @@ grow_vertical = 2
 size_flags_horizontal = 4
 color = Color(0.379811, 0.379811, 0.37981, 1)
 
-[node name="Enemy" type="CharacterBody2D" parent="CanvasLayer" groups=["Enemy"]]
-position = Vector2(937, 461)
-motion_mode = 1
-script = ExtResource("2_tgdft")
+[node name="Control" type="Node2D" parent="CanvasLayer"]
+script = ExtResource("4_ocm3m")
 
-[node name="EnemyCollision" type="CollisionShape2D" parent="CanvasLayer/Enemy" groups=["Enemy"]]
-modulate = Color(0.384169, 0.381343, 0, 1)
-position = Vector2(-2, 0)
-shape = SubResource("CircleShape2D_tlfd6")
-debug_color = Color(0.628265, 0.605029, 7.6249e-07, 1)
-
-[node name="EnemyRender" type="Node2D" parent="CanvasLayer/Enemy" groups=["Enemy"]]
-script = ExtResource("3_suaag")
+[node name="EnemySpawner" type="Timer" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+autostart = true
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer" groups=["Player"]]
 unique_name_in_owner = true
@@ -64,3 +55,5 @@ script = ExtResource("3_suaag")
 unique_name_in_owner = true
 position = Vector2(140, -82)
 rotation = 1.5708
+
+[connection signal="timeout" from="CanvasLayer/Control/EnemySpawner" to="CanvasLayer/Control" method="_on_enemy_spawner_timeout"]
