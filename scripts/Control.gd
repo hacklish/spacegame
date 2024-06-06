@@ -11,10 +11,10 @@ func _on_enemy_spawner_timeout():
 func randomize_spawn_point():
 	var spawn_point = Vector2()
 	randomize()
-	
+
 	var area = get_window().get_visible_rect()
 	var s = randi_range(1, 4)
-	
+
 	var x = get_viewport_rect().size.x
 	var y = get_viewport_rect().size.y
 
