@@ -30,6 +30,13 @@ Laser Gun
 
 # Obrazovky
 
+## Herní pole
+
 Hra se skládá pouze z herní obrazovky, při smrti je resetována do výchozího
 stavu. Tento krok byl zvolen pro zvýraznění retro charakteru návrhu a pro
 mírnou frustraci z obtížnosti a nekonečnosti přílivu nepřátel.
+
+## Konec hry
+
+Při smrti hráče se zobrazí obrazovka s nápisem Game Over, prosvítá herní
+pole, score a uživatel může začít novou hru.
