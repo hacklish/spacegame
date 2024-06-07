@@ -42,3 +42,6 @@ func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shap
 func _on_retry_button_pressed():
 	get_tree().set_pause(false)
 	get_tree().reload_current_scene()
+
+func _on_backgroud_music_finished():
+	%BackgroudMusic.play(0.0)

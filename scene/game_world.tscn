@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://beit42yk4qfj5"]
+[gd_scene load_steps=16 format=3 uid="uid://beit42yk4qfj5"]
 
 [ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
 [ext_resource type="Script" path="res://scene/Score.gd" id="2_tft72"]
 [ext_resource type="Script" path="res://scripts/Ship.gd" id="3_suaag"]
 [ext_resource type="Script" path="res://scripts/Control.gd" id="4_ocm3m"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
+[ext_resource type="AudioStream" uid="uid://cjhvxx2myxvgv" path="res://assets/music.mp3" id="6_7436n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ta2i"]
 shader = ExtResource("1_u5o0x")
@@ -56,6 +57,11 @@ color = Color(0.379811, 0.379811, 0.37981, 1)
 
 [node name="Control" type="Node2D" parent="CanvasLayer" groups=["Control"]]
 script = ExtResource("4_ocm3m")
+
+[node name="BackgroudMusic" type="AudioStreamPlayer2D" parent="CanvasLayer/Control"]
+unique_name_in_owner = true
+stream = ExtResource("6_7436n")
+autoplay = true
 
 [node name="EnemySpawner" type="Timer" parent="CanvasLayer/Control" groups=["Control"]]
 wait_time = 0.7
@@ -138,6 +144,7 @@ action_mode = 0
 button_mask = 7
 text = "Try again"
 
+[connection signal="finished" from="CanvasLayer/Control/BackgroudMusic" to="CanvasLayer/Control" method="_on_backgroud_music_finished"]
 [connection signal="timeout" from="CanvasLayer/Control/EnemySpawner" to="CanvasLayer/Control" method="_on_enemy_spawner_timeout"]
 [connection signal="body_shape_entered" from="CanvasLayer/Player/Area2D" to="CanvasLayer/Control" method="_on_area_2d_body_shape_entered"]
 [connection signal="button_down" from="CanvasLayer/GameOverBackground/RetryButton" to="CanvasLayer/Control" method="_on_retry_button_button_down"]

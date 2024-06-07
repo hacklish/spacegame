@@ -20,6 +20,10 @@ střelbou a případnými výbychy, bude-li to příliš komplikované dokončit
 Obrázek střely převzat z internetu:
 https://github.com/godotrecipes/2d_shooting
 
+Hudba na pozadí převzata z internetu:
+https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6
+Skladba `8bit menu`, autor David Renda
+
 # Obrazovky
 
 Hra se skládá pouze z herní obrazovky, při smrti je resetována do výchozího
