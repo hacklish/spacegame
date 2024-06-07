@@ -20,13 +20,12 @@ střelbou a případnými výbychy, bude-li to příliš komplikované dokončit
 Obrázek střely převzat z internetu:
 https://github.com/godotrecipes/2d_shooting
 
-Hudba na pozadí převzata z internetu:
+Skladba `8bit menu`, autor David Renda, hudba na pozadí převzata z internetu:
 https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6
-Skladba `8bit menu`, autor David Renda
 
-Zvuk střelby převzat z internetu:
+Laser Gun, zvuk střelby převzat z internetu:
 https://pixabay.com/sound-effects/search/shoot/
-Laser Gun
+
 
 # Obrazovky
 

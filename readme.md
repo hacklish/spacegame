@@ -7,7 +7,9 @@ a zničit co nejvíce nepřátelských lodí.
 # Ovládání
 
 Pohyb: W/S/A/D
+
 Míření za pomocí kurzoru myši
+
 Střelba pomocí levého tlačítka myši
 
 # Požadavky
