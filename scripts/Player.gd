@@ -33,3 +33,4 @@ func shoot():
 	poof.start_rotation = %Barrel.global_rotation
 	poof.start_position = %Barrel.global_position
 	get_parent().add_child(poof)
+	%ShootSound.play()

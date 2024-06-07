@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://beit42yk4qfj5"]
+[gd_scene load_steps=17 format=3 uid="uid://beit42yk4qfj5"]
 
 [ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
 [ext_resource type="Script" path="res://scene/Score.gd" id="2_tft72"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Control.gd" id="4_ocm3m"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
 [ext_resource type="AudioStream" uid="uid://cjhvxx2myxvgv" path="res://assets/music.mp3" id="6_7436n"]
+[ext_resource type="AudioStream" uid="uid://daoobh8xw3m8u" path="res://assets/shoot.mp3" id="7_p357n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ta2i"]
 shader = ExtResource("1_u5o0x")
@@ -92,6 +93,10 @@ script = ExtResource("3_suaag")
 unique_name_in_owner = true
 position = Vector2(140, -82)
 rotation = 1.5708
+
+[node name="ShootSound" type="AudioStreamPlayer2D" parent="CanvasLayer/Player"]
+unique_name_in_owner = true
+stream = ExtResource("7_p357n")
 
 [node name="Area2D" type="Area2D" parent="CanvasLayer/Player"]
 

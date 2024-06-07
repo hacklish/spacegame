@@ -24,6 +24,10 @@ Hudba na pozadí převzata z internetu:
 https://www.fesliyanstudios.com/royalty-free-music/downloads-c/8-bit-music/6
 Skladba `8bit menu`, autor David Renda
 
+Zvuk střelby převzat z internetu:
+https://pixabay.com/sound-effects/search/shoot/
+Laser Gun
+
 # Obrazovky
 
 Hra se skládá pouze z herní obrazovky, při smrti je resetována do výchozího
