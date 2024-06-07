@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://beit42yk4qfj5"]
+[gd_scene load_steps=15 format=3 uid="uid://beit42yk4qfj5"]
 
 [ext_resource type="Shader" path="res://background.gdshader" id="1_u5o0x"]
+[ext_resource type="Script" path="res://scene/Score.gd" id="2_tft72"]
 [ext_resource type="Script" path="res://scripts/Ship.gd" id="3_suaag"]
 [ext_resource type="Script" path="res://scripts/Control.gd" id="4_ocm3m"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="4_qiilt"]
@@ -10,10 +11,28 @@ shader = ExtResource("1_u5o0x")
 shader_parameter/center = Vector2(0.5, 0.5)
 shader_parameter/force = 0.3
 
+[sub_resource type="SystemFont" id="SystemFont_haa38"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_smlpc"]
+font = SubResource("SystemFont_haa38")
+font_size = 25
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_iiqyi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m8fsh"]
 radius = 12.0
+
+[sub_resource type="SystemFont" id="SystemFont_ti8al"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qh6e5"]
+font = SubResource("SystemFont_ti8al")
+font_size = 60
+
+[sub_resource type="SystemFont" id="SystemFont_rtvjj"]
+
+[sub_resource type="Theme" id="Theme_v4xu5"]
+default_font = SubResource("SystemFont_rtvjj")
+default_font_size = 25
 
 [node name="GameWorld" type="Node2D"]
 visible = false
@@ -22,7 +41,7 @@ visible = false
 layer = -1
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="GameBackground" type="ColorRect" parent="CanvasLayer"]
 z_as_relative = false
 y_sort_enabled = true
 material = SubResource("ShaderMaterial_2ta2i")
@@ -32,14 +51,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 color = Color(0.379811, 0.379811, 0.37981, 1)
 
-[node name="Control" type="Node2D" parent="CanvasLayer"]
+[node name="Control" type="Node2D" parent="CanvasLayer" groups=["Control"]]
 script = ExtResource("4_ocm3m")
 
-[node name="EnemySpawner" type="Timer" parent="CanvasLayer/Control"]
+[node name="EnemySpawner" type="Timer" parent="CanvasLayer/Control" groups=["Control"]]
 wait_time = 0.7
 autostart = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/Control" groups=["Control"]]
+unique_name_in_owner = true
+offset_right = 208.0
+offset_bottom = 23.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_smlpc")
+script = ExtResource("2_tft72")
 
 [node name="Player" type="CharacterBody2D" parent="CanvasLayer" groups=["Player"]]
 unique_name_in_owner = true
@@ -65,5 +93,52 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_m8fsh")
 debug_color = Color(0.266667, 0, 0.427451, 0.952941)
 
+[node name="GameOverBackground" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+process_mode = 2
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 1
+mouse_filter = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameOverBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_qh6e5")
+
+[node name="RetryButton" type="Button" parent="CanvasLayer/GameOverBackground"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -87.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_v4xu5")
+action_mode = 0
+button_mask = 7
+text = "Try again"
+
 [connection signal="timeout" from="CanvasLayer/Control/EnemySpawner" to="CanvasLayer/Control" method="_on_enemy_spawner_timeout"]
 [connection signal="body_shape_entered" from="CanvasLayer/Player/Area2D" to="CanvasLayer/Control" method="_on_area_2d_body_shape_entered"]
+[connection signal="button_down" from="CanvasLayer/GameOverBackground/RetryButton" to="CanvasLayer/Control" method="_on_retry_button_button_down"]
+[connection signal="pressed" from="CanvasLayer/GameOverBackground/RetryButton" to="CanvasLayer/Control" method="_on_retry_button_pressed"]

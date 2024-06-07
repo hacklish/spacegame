@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var enemy = load("res://scene/enemy.tscn")
 
+func _ready():
+	owner.get_node("%GameOverBackground").hide()
+
 func _on_enemy_spawner_timeout():
 	var rnd_position = randomize_spawn_point()
 	var baddie = enemy.instantiate()
@@ -33,4 +36,9 @@ func randomize_spawn_point():
 
 func _on_area_2d_body_shape_entered(body_rid, body, body_shape_index, local_shape_index):
 	if body.is_in_group("Enemy"):
-		get_tree().reload_current_scene()
+		get_tree().set_pause(true)
+		owner.get_node("%GameOverBackground").show()
+
+func _on_retry_button_pressed():
+	get_tree().set_pause(false)
+	get_tree().reload_current_scene()

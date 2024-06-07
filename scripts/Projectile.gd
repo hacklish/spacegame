@@ -19,3 +19,4 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("Enemy"):
 		body.queue_free()
 		queue_free()
+		get_tree().call_group("Control", "_on_enemy_kill")
